@@ -25,8 +25,13 @@ export const LoginPage = () => {
       await login(username.trim(), password);
       navigate('/dashboard');
     } catch (err) {
-      const serverMessage = err.response?.data?.message || 'Invalid username or password. Please try again.';
-      setError(serverMessage);
+      if (!err.response) {
+        setError('Cannot connect to backend server. Please verify Spring Boot is running on port 8080.');
+      } else if (err.response.status === 401) {
+        setError(err.response.data?.message || 'Invalid username or password. Please try again.');
+      } else {
+        setError(err.response.data?.message || 'Authentication error. Please try again.');
+      }
     } finally {
       setIsSubmitting(false);
     }
