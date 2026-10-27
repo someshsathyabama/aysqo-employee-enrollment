@@ -44,12 +44,17 @@ export const DashboardPage = () => {
   return (
     <div className="space-y-6">
       {/* Top Banner & Quick Actions */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900">HR Executive Dashboard</h1>
-          <p className="text-xs text-slate-500 mt-1">
-            Real-time organizational headcount, enrollment pipelines, and corporate metrics
-          </p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+        <div className="flex items-center space-x-3.5">
+          <div className="bg-white p-2 rounded-xl border border-slate-200 shadow-xs shrink-0 flex items-center justify-center">
+            <img src="/aysqo-logo.png" alt="Aysqo Technology Solutions" className="h-10 w-auto object-contain" />
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900">HR Executive Dashboard</h1>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Aysqo Technology Solutions • Headcount, enrollment pipelines & corporate metrics
+            </p>
+          </div>
         </div>
         <div className="flex items-center space-x-2.5">
           <button

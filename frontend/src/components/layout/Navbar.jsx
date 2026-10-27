@@ -34,7 +34,12 @@ export const Navbar = ({ openMobile }) => {
         >
           <Menu className="w-5 h-5" />
         </button>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2.5">
+          <img 
+            src="/aysqo-logo.png" 
+            alt="Aysqo Logo" 
+            className="h-7 w-auto object-contain hidden sm:block" 
+          />
           <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
             Aysqo Technologies Portal
           </span>

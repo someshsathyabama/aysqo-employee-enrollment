@@ -47,11 +47,15 @@ export const LoginPage = () => {
     <div className="min-h-screen bg-[#f1f5f9] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <div className="p-3 bg-[#0c1b30] rounded-xl shadow-md border border-[#1e3d64] text-white">
-            <Building2 className="w-8 h-8 text-blue-400" />
+          <div className="p-3 bg-white rounded-2xl shadow-sm border border-slate-200">
+            <img 
+              src="/aysqo-logo.png" 
+              alt="Aysqo Technology Solutions Private Limited" 
+              className="h-16 w-auto object-contain"
+            />
           </div>
         </div>
-        <h2 className="mt-4 text-center text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="mt-4 text-center text-xl font-bold tracking-tight text-slate-900">
           AYSQO TECHNOLOGIES
         </h2>
         <p className="mt-1 text-center text-xs font-semibold tracking-wider uppercase text-slate-500">

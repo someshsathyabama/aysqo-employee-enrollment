@@ -32,14 +32,17 @@ export const Sidebar = ({ isMobileOpen, closeMobile }) => {
   const sidebarContent = (
     <div className="flex flex-col h-full bg-[#0c1b30] text-slate-300 border-r border-[#1e3d64]">
       {/* Brand Header */}
-      <div className="flex items-center px-6 h-16 border-b border-[#1e3d64] bg-[#081322]">
-        <div className="flex items-center space-x-3">
-          <div className="p-2 rounded-lg bg-blue-600 text-white shadow-xs">
-            <Building2 className="w-5 h-5" />
+      <div className="flex items-center px-4 h-16 border-b border-[#1e3d64] bg-[#081322]">
+        <div className="flex items-center space-x-3 w-full">
+          <div className="bg-white p-1 rounded-lg shadow-xs flex items-center justify-center shrink-0">
+            <img 
+              src="/aysqo-logo.png" 
+              alt="Aysqo Technology Solutions" 
+              className="h-8 w-auto object-contain max-w-[130px]" 
+            />
           </div>
-          <div>
-            <span className="text-base font-bold tracking-tight text-white block leading-tight">AYSQO</span>
-            <span className="text-[10px] font-medium tracking-widest text-blue-400 uppercase block">HR ENTERPRISE</span>
+          <div className="overflow-hidden">
+            <span className="text-[10px] font-semibold tracking-wider text-blue-300 uppercase block">HR Portal</span>
           </div>
         </div>
       </div>
