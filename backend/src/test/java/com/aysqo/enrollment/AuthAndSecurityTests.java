@@ -62,6 +62,12 @@ public class AuthAndSecurityTests {
         String rawPassword = "SecurePassword@2026";
         String encoded = passwordEncoder.encode(rawPassword);
         assertTrue(passwordEncoder.matches(rawPassword, encoded));
+
+        // Verify Admin@123 and Hr@123 hash validity
+        String adminHash = "$2a$10$DEG2SWXy2/fDTUCcVVAjRuzHDP2esEtDvPhbFg5Lugjj6wrb4GbBC";
+        String hrHash = "$2a$10$SYVPMMXv9v00ThKlcEnvUOjjwjliIMEob9uo2NIKGxtFtJJYccpyW";
+        assertTrue(passwordEncoder.matches("Admin@123", adminHash));
+        assertTrue(passwordEncoder.matches("Hr@123", hrHash));
     }
 
     @Test

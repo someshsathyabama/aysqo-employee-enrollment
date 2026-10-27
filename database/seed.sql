@@ -17,10 +17,13 @@ SET FOREIGN_KEY_CHECKS = 0;
 --   admin      -> Admin@123
 --   hr_manager -> Hr@123
 -- -----------------------------------------------------------------------------
-INSERT IGNORE INTO users (username, email, password_hash, full_name, role, is_active)
+INSERT INTO users (username, email, password_hash, full_name, role, is_active)
 VALUES 
-('admin', 'admin@aysqo.com', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGkqRzgVymGe07xd00DMxs.AQubh4a', 'Aysqo System Administrator', 'ADMIN', TRUE),
-('hr_manager', 'hr@aysqo.com', '$2a$10$wT0XkO057wF4hS6e.e1pfe4/oXU3Q996XGZc88P65z5Gq8m4WsqI6', 'Sarah Jenkins (HR Lead)', 'HR', TRUE);
+('admin', 'admin@aysqo.com', '$2a$10$DEG2SWXy2/fDTUCcVVAjRuzHDP2esEtDvPhbFg5Lugjj6wrb4GbBC', 'Aysqo System Administrator', 'ADMIN', TRUE),
+('hr_manager', 'hr@aysqo.com', '$2a$10$SYVPMMXv9v00ThKlcEnvUOjjwjliIMEob9uo2NIKGxtFtJJYccpyW', 'Sarah Jenkins (HR Lead)', 'HR', TRUE)
+ON DUPLICATE KEY UPDATE 
+    password_hash = VALUES(password_hash),
+    is_active = TRUE;
 
 -- -----------------------------------------------------------------------------
 -- Seed: employees (10 Synthetic Demonstration Records)

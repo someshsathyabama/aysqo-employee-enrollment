@@ -55,9 +55,13 @@ public class AdminBootstrapConfig implements CommandLineRunner {
     }
 
     private void bootstrapUsers() {
-        // Bootstrap Administrator
-        if (!userRepository.existsByUsername(adminUsername)) {
-            User admin = new User(
+        // Bootstrap or Synchronize Administrator
+        User admin = userRepository.findByUsername(adminUsername)
+                .or(() -> userRepository.findByEmail(adminEmail))
+                .orElse(null);
+
+        if (admin == null) {
+            admin = new User(
                     adminUsername,
                     adminEmail,
                     passwordEncoder.encode(adminPassword),
@@ -66,12 +70,25 @@ public class AdminBootstrapConfig implements CommandLineRunner {
                     true
             );
             userRepository.save(admin);
-            logger.info("Bootstrap: Initial Administrator account successfully created: [{}]", adminUsername);
+            logger.info("Bootstrap: Initial Administrator account created: [{}]", adminUsername);
+        } else {
+            // Always synchronize password to guarantee login works regardless of prior seed scripts
+            admin.setUsername(adminUsername);
+            admin.setEmail(adminEmail);
+            admin.setPasswordHash(passwordEncoder.encode(adminPassword));
+            admin.setRole(Role.ADMIN);
+            admin.setIsActive(true);
+            userRepository.save(admin);
+            logger.info("Bootstrap: Synchronized password for Administrator account [{}]", adminUsername);
         }
 
-        // Bootstrap HR Manager
-        if (!userRepository.existsByUsername(hrUsername)) {
-            User hr = new User(
+        // Bootstrap or Synchronize HR Manager
+        User hr = userRepository.findByUsername(hrUsername)
+                .or(() -> userRepository.findByEmail(hrEmail))
+                .orElse(null);
+
+        if (hr == null) {
+            hr = new User(
                     hrUsername,
                     hrEmail,
                     passwordEncoder.encode(hrPassword),
@@ -80,7 +97,15 @@ public class AdminBootstrapConfig implements CommandLineRunner {
                     true
             );
             userRepository.save(hr);
-            logger.info("Bootstrap: Initial HR Manager account successfully created: [{}]", hrUsername);
+            logger.info("Bootstrap: Initial HR Manager account created: [{}]", hrUsername);
+        } else {
+            hr.setUsername(hrUsername);
+            hr.setEmail(hrEmail);
+            hr.setPasswordHash(passwordEncoder.encode(hrPassword));
+            hr.setRole(Role.HR);
+            hr.setIsActive(true);
+            userRepository.save(hr);
+            logger.info("Bootstrap: Synchronized password for HR Manager account [{}]", hrUsername);
         }
     }
 
