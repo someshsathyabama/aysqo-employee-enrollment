@@ -10,11 +10,18 @@ CREATE DATABASE IF NOT EXISTS aysqo_enrollment
 
 USE aysqo_enrollment;
 
+-- Disable foreign key checks while resetting/creating tables
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- Drop existing tables to ensure clean schema alignment
+DROP TABLE IF EXISTS employees;
+DROP TABLE IF EXISTS users;
+
 -- -----------------------------------------------------------------------------
 -- 1. Table: users
 -- Holds authenticated application accounts (ADMIN and HR roles)
 -- -----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE users (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
@@ -33,7 +40,7 @@ CREATE TABLE IF NOT EXISTS users (
 -- 2. Table: employees
 -- Holds employee enrollment master records
 -- -----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS employees (
+CREATE TABLE employees (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     employee_id VARCHAR(30) NOT NULL UNIQUE,
     first_name VARCHAR(50) NOT NULL,
@@ -61,3 +68,5 @@ CREATE TABLE IF NOT EXISTS employees (
     INDEX idx_emp_joining_date (joining_date),
     INDEX idx_emp_search_name (first_name, last_name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+SET FOREIGN_KEY_CHECKS = 1;
