@@ -21,7 +21,7 @@ The backend includes comprehensive JUnit 5 and Spring Boot integration tests ver
 Run the following command from PowerShell:
 
 ```powershell
-cd C:\Users\admin\.gemini\antigravity\scratch\aysqo-employee-enrollment\backend
+cd C:\Users\admin\aysqo-employee-enrollment\backend
 mvn clean test
 ```
 

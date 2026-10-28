@@ -130,7 +130,7 @@ MySQL Server is installed and running on your system as the Windows Service `MyS
 1. In MySQL Workbench, click **File** -> **Open SQL Script...** (or press `Ctrl + Shift + O`).
 2. Navigate to:
    ```text
-   C:\Users\admin\.gemini\antigravity\scratch\aysqo-employee-enrollment\database\schema.sql
+   C:\Users\admin\aysqo-employee-enrollment\database\schema.sql
    ```
 3. Click the **Execute (Lightning Bolt)** icon or press `Ctrl + Shift + Enter`.
 4. In the **SCHEMAS** tab on the left panel, right-click and choose **Refresh All**. You will see the new schema `aysqo_enrollment` containing `users` and `employees` tables.
@@ -138,7 +138,7 @@ MySQL Server is installed and running on your system as the Windows Service `MyS
 ### Step 3: (Optional) Execute Seed Script
 1. In Workbench, open:
    ```text
-   C:\Users\admin\.gemini\antigravity\scratch\aysqo-employee-enrollment\database\seed.sql
+   C:\Users\admin\aysqo-employee-enrollment\database\seed.sql
    ```
 2. Click **Execute** (`Ctrl + Shift + Enter`).
 > **Note:** Even if you do not run `seed.sql`, the Spring Boot application includes an automatic `AdminBootstrapConfig` runner that safely populates initial admin, HR, and synthetic records upon startup if the database is empty!
@@ -157,7 +157,7 @@ SELECT COUNT(*) AS total_employees FROM employees;
 
 Open Visual Studio Code in the project root:
 ```powershell
-code C:\Users\admin\.gemini\antigravity\scratch\aysqo-employee-enrollment
+code C:\Users\admin\aysqo-employee-enrollment
 ```
 
 ### Terminal 1: Start the Spring Boot Backend
@@ -169,7 +169,7 @@ code C:\Users\admin\.gemini\antigravity\scratch\aysqo-employee-enrollment
    ```
 3. Navigate to the backend directory and run:
    ```powershell
-   cd C:\Users\admin\.gemini\antigravity\scratch\aysqo-employee-enrollment\backend
+   cd C:\Users\admin\aysqo-employee-enrollment\backend
    mvn spring-boot:run
    ```
 4. Verify backend health in your browser:
@@ -181,7 +181,7 @@ code C:\Users\admin\.gemini\antigravity\scratch\aysqo-employee-enrollment
 1. Open a second PowerShell terminal in VS Code (`Ctrl + Shift + 5` or click `+`).
 2. Navigate to the frontend directory and launch the development server:
    ```powershell
-   cd C:\Users\admin\.gemini\antigravity\scratch\aysqo-employee-enrollment\frontend
+   cd C:\Users\admin\aysqo-employee-enrollment\frontend
    npm run dev
    ```
 3. Open your browser to:
@@ -207,7 +207,7 @@ The application features a secure, local bootstrap mechanism (`AdminBootstrapCon
 Run the full automated test suite (15 unit and integration tests):
 
 ```powershell
-cd C:\Users\admin\.gemini\antigravity\scratch\aysqo-employee-enrollment\backend
+cd C:\Users\admin\aysqo-employee-enrollment\backend
 mvn clean test
 ```
 
@@ -223,14 +223,14 @@ mvn clean test
 
 ### Frontend Production Build
 ```powershell
-cd C:\Users\admin\.gemini\antigravity\scratch\aysqo-employee-enrollment\frontend
+cd C:\Users\admin\aysqo-employee-enrollment\frontend
 npm run build
 ```
 Generates optimized static assets in `frontend/dist/`.
 
 ### Backend Production Build
 ```powershell
-cd C:\Users\admin\.gemini\antigravity\scratch\aysqo-employee-enrollment\backend
+cd C:\Users\admin\aysqo-employee-enrollment\backend
 mvn clean package -DskipTests
 ```
 Generates runnable executable JAR in `backend/target/aysqo-employee-enrollment-backend-1.0.0.jar`.
